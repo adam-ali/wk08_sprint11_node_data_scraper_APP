@@ -1,5 +1,6 @@
 var path = require('path');
 module.exports = {
+    devtool: 'eval-source',
     context: __dirname,
     entry: './client/app.jsx',
     output: {

@@ -1,10 +1,9 @@
-var React = require('react');
+import React from 'react';
 import ajax from 'superagent';
-import ReactDOM from 'react-dom';
-import { Router, Route, Link,  } from 'react-router'
+import { Router, Route, Link } from 'react-router'
 
 
-var users = React.createClass({
+var Users = React.createClass({
     getInitialState: function(){
         return{
             users:[]
@@ -29,7 +28,6 @@ var users = React.createClass({
         return (
             <div className="text-center">
                 <h1 className="title ">LeaderBoard</h1>
-
                 <div className='container-fluid' >
                     <table className="table table-hover">
                         <tbody>
@@ -43,12 +41,16 @@ var users = React.createClass({
                         </tr>
                         {this.state.users.map((user, index) => {
                             return (
-                                <tr className="active" key={index}>
+                                <tr className="active" key={index} onClick={console.log()}>
                                     <td className="active tableItems">{user.position}</td>
-                                    <td className="active tableItems">{user.user}</td>
+                                    <td className="active tableItems">
+                                        <Link key={user.user} to={`/users/${user.user}`}>{user.user}</Link>
+                                    </td>
                                     <td className="active tableItems">{user.honor}</td>
                                     <td className="active tableItems">{user.rank}</td>
-                                    <td className="active tableItems">{user.profileUrl}</td>
+                                    <td className="active tableItems">
+                                        <a href={user.profileUrl}>{user.profileUrl}</a>
+                                    </td>
                                 </tr>
                             )
                         })}
@@ -59,4 +61,4 @@ var users = React.createClass({
         )
     }
 });
-module.exports= users;
+module.exports= Users;
