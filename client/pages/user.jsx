@@ -15,7 +15,7 @@ var User = React.createClass({
             .get('http://localhost:3001/api/users/'+ this.props.params.user)
             .end((err, res) => {
                 if (err || !res.ok) {
-                    alert('Oh no! error' + err);
+                    console.log('Oh no! error' + err);
                 } else {
                     this.setState({
                         user: res.body
